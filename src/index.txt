@@ -5,13 +5,12 @@
 - You can then use current to access the properties of that element.
 
 => State VS Refs
-// State 
-1. State causes components re-execution when changed
-2. Should be used for values that are directly reflected in the UI
+- State (useState) triggers a re-render when updated.
+- Refs (useRef) do not trigger a re-render when updated.
 
-// Refs
-1. Refs don't cause components to re-execute when changed
-2. Can be used to gain direct DOM element access (great for reading values)
+// Use case 
+- State: UI updates, form inputs, component state
+- Ref: Referencing DOM elements, storing previous values, timers, etc.
 
 => We can use Ref for more than "DOM element connection"
 - It's also used to manage any kind of value because it doesn't re-render.
