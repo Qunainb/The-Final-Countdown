@@ -1,0 +1,42 @@
+=> Refs
+- A ref in the react is the value just like state is the value but special kind of value
+- In React, a ref (short for "reference") is an object that allows you to directly access and interact with a DOM element
+ or a React component.
+- You can then use current to access the properties of that element.
+
+=> State VS Refs
+// State 
+1. State causes components re-execution when changed
+2. Should be used for values that are directly reflected in the UI
+
+// Refs
+1. Refs don't cause components to re-execute when changed
+2. Can be used to gain direct DOM element access (great for reading values)
+
+=> We can use Ref for more than "DOM element connection"
+- It's also used to manage any kind of value because it doesn't re-render.
+- useRef allows us to persist values like the timer ID across renders without causing re-renders.
+- It's ideal for managing things like timeouts, intervals, or DOM references without affecting the UI rendering process.
+
+=> Modal Component
+- dialogs element: "<dialog> </dialog>"
+- The <dialog> element in HTML is used to create interactive, modal, or non-modal dialog boxes. It allows you to display a popup within a web page
+- If we add a from with method = "dialog" inside of a dialog the button that submits the form will close this dialog
+- Also the built in dialog element by default is hidden. To make is visible by adding "open" attribute to it
+
+=> Forwading refs to Custom Components
+- The dialog element comes in with a built in backdrop element that will be displayed behind the dialog but this build in backdrop will not be shown
+if you force the dialog to be visible by setting "open" attribute. So now we have to programmatically open the modal
+
+- We wrap our component function with some function provided by react
+// import { forwardRef } from "react"
+
+- This forward ref function then needs to be wrapped around component function and we get back an adjusted version (putting into variable)
+- This component function then recieve an additional parameter aside from props parameter that is "ref" parameter 
+
+// Another thing about refs is we can forward it but for that we have to wrap our component function with forwardRefs
+ if we are using below react version 19
+
+=> useImperativeHandle
+- With useImperativeHandle, you can customize what gets exposed when a ref is used on a component. Instead of exposing the entire DOM element,
+ you can expose only specific functions or values.
