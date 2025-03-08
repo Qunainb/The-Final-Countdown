@@ -24,18 +24,21 @@
 - Also the built in dialog element by default is hidden. To make is visible by adding "open" attribute to it
 
 => Forwading refs to Custom Components
-- The dialog element comes in with a built in backdrop element that will be displayed behind the dialog but this build in backdrop will not be shown
-if you force the dialog to be visible by setting "open" attribute. So now we have to programmatically open the modal
-
+- In React, ref cannot be passed directly to a custom component.
+- By default, refs only work on native HTML elements (<input>, <button>, etc.), but not on custom components.
+- To allow a custom component to receive a ref we use forwardRef
 - We wrap our component function with some function provided by react
-// import { forwardRef } from "react"
 
-- This forward ref function then needs to be wrapped around component function and we get back an adjusted version (putting into variable)
-- This component function then recieve an additional parameter aside from props parameter that is "ref" parameter 
+- In React 19, you can directly assign a ref to a custom component without using forwardRef
 
-// Another thing about refs is we can forward it but for that we have to wrap our component function with forwardRefs
- if we are using below react version 19
 
 => useImperativeHandle
-- With useImperativeHandle, you can customize what gets exposed when a ref is used on a component. Instead of exposing the entire DOM element,
- you can expose only specific functions or values.
+- useImperativeHandle is used in React to expose specific properties or methods of a child component to its parent when using ref.
+
+=> Why use useImperativeHandle
+- Normally, refs only give access to the DOM element (like an <input>).
+- But sometimes, you want to expose custom methods inside a component to be controlled from the parent.
+
+// Summary
+- If the ref is on a DOM element (<dialog ref={dialog}>), you can directly use dialog.current.showModal(), and useImperativeHandle is not needed.
+- If the ref is on a custom component, React won’t forward it by default. You must use forwardRef + useImperativeHandle to expose functions like open().
