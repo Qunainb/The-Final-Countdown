@@ -13,9 +13,9 @@
 - Ref: Referencing DOM elements, storing previous values, timers, etc.
 
 => We can use Ref for more than "DOM element connection"
-- It's also used to manage any kind of value because it doesn't re-render.
-- useRef allows us to persist values like the timer ID across renders without causing re-renders.
-- It's ideal for managing things like timeouts, intervals, or DOM references without affecting the UI rendering process.
+- useRef is also used to store timer IDs when working with setTimeout or setInterval
+- This is because useRef persists values across renders without causing re-renders, unlike useState.
+- Even if useRef is stored inside state, updating .current won't trigger a re-render.
 
 => Modal Component
 - dialogs element: "<dialog> </dialog>"
