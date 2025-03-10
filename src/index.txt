@@ -42,3 +42,6 @@
 // Summary
 - If the ref is on a DOM element (<dialog ref={dialog}>), you can directly use dialog.current.showModal(), and useImperativeHandle is not needed.
 - If the ref is on a custom component, React won’t forward it by default. You must use forwardRef + useImperativeHandle to expose functions like open().
+
+=> Portals
+- A Portal in React allows you to render a component outside of its normal DOM hierarchy, usually directly inside the <body> or another DOM node.
